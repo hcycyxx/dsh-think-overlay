@@ -1,0 +1,4 @@
+# dsh-think-overlay —— 实时思考悬浮窗（纯客户端插件，宿主侧为空壳）
+- insert:
+    - id: dsh-think-overlay
+      name: dsh-think-overlay
