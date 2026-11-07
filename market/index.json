@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Think Overlay by hcycyxx",
+    "zh": "hcycyxx 思考悬浮窗"
+  },
+  "description": {
+    "en": "The community Discover index for dsh-think-overlay.",
+    "zh": "dsh-think-overlay 的独立社区索引。"
+  },
+  "metadata": {
+    "categories": {
+      "appearance": {
+        "title": {
+          "en": "Appearance",
+          "zh": "界面外观"
+        }
+      }
+    }
+  },
+  "plugins": [
+    {
+      "name": "dsh-think-overlay",
+      "title": {
+        "en": "Think Overlay",
+        "zh": "思考悬浮窗"
+      },
+      "description": {
+        "en": "A draggable always-on-top overlay that streams DSH's live thinking character by character, with a speed-linked status light and automatic EN→ZH translation.",
+        "zh": "把 DSH 的实时思考逐字流进可拖拽的置顶悬浮窗，绿灯跟着吐字速度闪，英文思考自动翻成中文。"
+      },
+      "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij4KICA8cmVjdCB4PSI0IiB5PSI4IiB3aWR0aD0iNTYiIGhlaWdodD0iNDgiIHJ4PSIxMiIgZmlsbD0iIzBCMTExOCIgc3Ryb2tlPSIjMjQzODRhIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjIwIiByPSI0IiBmaWxsPSIjNTdFM0FFIi8+CiAgPHJlY3QgeD0iMjYiIHk9IjE3IiB3aWR0aD0iMjYiIGhlaWdodD0iNSIgcng9IjIuNSIgZmlsbD0iIzhhYTBiNCIvPgogIDxyZWN0IHg9IjEyIiB5PSIzMiIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQiIHJ4PSIyIiBmaWxsPSIjM2E0ZDYwIi8+CiAgPHJlY3QgeD0iMTIiIHk9IjQwIiB3aWR0aD0iMzQiIGhlaWdodD0iNCIgcng9IjIiIGZpbGw9IiMzYTRkNjAiLz4KICA8cmVjdCB4PSIxMiIgeT0iNDgiIHdpZHRoPSIyMiIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iIzNhNGQ2MCIvPgo8L3N2Zz4K",
+      "author": "hcycyxx",
+      "homepage": "https://github.com/hcycyxx/dsh-think-overlay#readme",
+      "repository": {
+        "url": "https://github.com/hcycyxx/dsh-think-overlay"
+      },
+      "metadata": {
+        "category": "appearance",
+        "keywords": [
+          "dsh-plugin",
+          "deepseek-harness",
+          "thinking",
+          "reasoning",
+          "overlay",
+          "streaming",
+          "悬浮窗",
+          "思考",
+          "逐字流式",
+          "英译中"
+        ]
+      },
+      "dist-tags": {
+        "latest": "0.2.0"
+      },
+      "versions": [
+        {
+          "version": "0.2.0",
+          "publishTimestamp": 1794073448,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/hcycyxx/dsh-think-overlay",
+            "commit": "e26e3f040d1e76cd863b2119b2e16aaca958a564"
+          }
+        }
+      ]
+    }
+  ]
+}

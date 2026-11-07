@@ -21,6 +21,11 @@ jobs:
       - name: Syntax check
         run: node --check client.js && node --check index.js
       - name: Publish
-        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "NPM_TOKEN is not configured; skipping publish. Add it in repo Settings to enable @latest installs."
+            exit 0
+          fi
+          npm publish --access public
