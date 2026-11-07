@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <linearGradient id="desk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#121a24"/>
+      <stop offset="1" stop-color="#0a1018"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#57e3ae"/>
+      <stop offset="1" stop-color="#57e3ae" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="560" fill="url(#desk)"/>
+  <!-- faint desktop hints -->
+  <g fill="#ffffff" opacity="0.04">
+    <rect x="52" y="46" width="330" height="18" rx="9"/>
+    <rect x="52" y="86" width="250" height="18" rx="9"/>
+    <rect x="52" y="126" width="290" height="18" rx="9"/>
+    <rect x="52" y="166" width="210" height="18" rx="9"/>
+    <rect x="52" y="230" width="360" height="120" rx="14"/>
+  </g>
+  <text x="52" y="34" fill="#8aa0b4" opacity="0.55" font-size="14">DSH · 会话窗口</text>
+
+  <!-- overlay window -->
+  <g filter="url(#shadow)">
+    <rect x="452" y="150" width="404" height="360" rx="18" fill="#0b1118" stroke="#24384a" stroke-width="1.5"/>
+  </g>
+  <!-- header -->
+  <g>
+    <circle cx="480" cy="182" r="6" fill="#57e3ae"/>
+    <circle cx="480" cy="182" r="11" fill="#57e3ae" opacity="0.18"/>
+    <text x="498" y="188" fill="#e6f2ee" font-size="14" font-weight="700" letter-spacing="1.4">LIVE THINK</text>
+    <text x="498" y="207" fill="#8aa0b4" font-size="11">思考 · 悬浮窗</text>
+    <g fill="#8aa0b4" font-size="14" text-anchor="middle">
+      <g>
+        <rect x="690" y="168" width="26" height="24" rx="7" fill="#16222e"/>
+        <text x="703" y="186">译</text>
+      </g>
+      <g>
+        <rect x="720" y="168" width="26" height="24" rx="7" fill="#16222e"/>
+        <text x="733" y="186">⧉</text>
+      </g>
+      <g>
+        <rect x="750" y="168" width="26" height="24" rx="7" fill="#16222e"/>
+        <text x="763" y="186">◌</text>
+      </g>
+      <g>
+        <rect x="780" y="168" width="26" height="24" rx="7" fill="#16222e"/>
+        <text x="793" y="186">Ⅱ</text>
+      </g>
+      <g>
+        <rect x="810" y="168" width="26" height="24" rx="7" fill="#16222e"/>
+        <text x="823" y="186">—</text>
+      </g>
+    </g>
+  </g>
+  <rect x="468" y="218" width="372" height="1" fill="#1d2b38"/>
+  <!-- sliders -->
+  <g font-size="10" fill="#66809a">
+    <text x="472" y="238">透明度</text>
+    <rect x="516" y="233" width="150" height="4" rx="2" fill="#1d2b38"/>
+    <rect x="516" y="233" width="120" height="4" rx="2" fill="#57e3ae" opacity="0.75"/>
+    <circle cx="636" cy="235" r="6" fill="#cfe9df"/>
+    <text x="694" y="238">字号</text>
+    <rect x="724" y="233" width="112" height="4" rx="2" fill="#1d2b38"/>
+    <rect x="724" y="233" width="54" height="4" rx="2" fill="#57e3ae" opacity="0.75"/>
+    <circle cx="778" cy="235" r="6" fill="#cfe9df"/>
+  </g>
+  <rect x="468" y="250" width="372" height="1" fill="#1d2b38"/>
+
+  <!-- entries -->
+  <g>
+    <rect x="468" y="266" width="372" height="1" fill="#1b2835"/>
+    <text x="472" y="286" fill="#57e3ae" font-size="11">▶ 终端 · 22:53:08</text>
+    <text x="472" y="310" fill="#dbe7ef" font-size="13">先确认打包目录里有哪些文件，再决定要不要</text>
+    <text x="472" y="330" fill="#dbe7ef" font-size="13">把 tgz 复制到无空格路径。</text>
+
+    <rect x="468" y="346" width="372" height="1" fill="#1b2835"/>
+    <text x="472" y="366" fill="#57e3ae" font-size="11">▶ 读文件 · 22:53:11</text>
+    <text x="472" y="390" fill="#dbe7ef" font-size="13">索引结构对上了：format 1、plugins[] 里带</text>
+    <text x="472" y="410" fill="#dbe7ef" font-size="13">versions[]，每个版本写明 source。</text>
+
+    <rect x="468" y="426" width="372" height="1" fill="#1b2835"/>
+    <text x="472" y="446" fill="#57e3ae" font-size="11">▶ 思考 · 22:53:14</text>
+    <text x="472" y="470" fill="#dbe7ef" font-size="13">接下来把市场索引指向最终提交<tspan fill="#57e3ae">▌</tspan></text>
+    <rect x="472" y="478" width="216" height="3" rx="1.5" fill="url(#bar)" opacity="0.5"/>
+  </g>
+  <text x="472" y="498" fill="#5b748c" font-size="10">拖动标题移动 · 拖边缘缩放 · 设置自动保存</text>
+
+  <!-- annotation -->
+  <g fill="#8aa0b4" opacity="0.75" font-size="12">
+    <path d="M452 182 H300" stroke="#57e3ae" stroke-width="1" stroke-dasharray="4 4" fill="none" opacity="0.5"/>
+    <text x="150" y="186">绿灯：待机慢呼吸</text>
+    <text x="150" y="204">思考越快闪得越急</text>
+    <path d="M470 470 H300" stroke="#57e3ae" stroke-width="1" stroke-dasharray="4 4" fill="none" opacity="0.5"/>
+    <text x="150" y="474">逐字流入，不整段闪跳</text>
+  </g>
+</svg>

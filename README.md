@@ -1,118 +1,167 @@
-# dsh-think-overlay · 实时思考悬浮窗
+<div align="center">
+  <h1>DSH Think Overlay</h1>
+  <p><strong>把 DeepSeek Harness 的实时思考，抽成一扇看得见、摸得着的悬浮窗。</strong></p>
+  <p>逐字流式 · 绿灯跟速 · 自动英译中</p>
+  <p>
+    <a href="README.md"><img src="https://img.shields.io/badge/lang-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-B85645.svg" alt="简体中文" /></a>
+    <a href="README.en.md"><img src="https://img.shields.io/badge/lang-English-3771A4.svg" alt="English" /></a>
+  </p>
+  <p>
+    <a href="https://github.com/hcycyxx/dsh-think-overlay/releases"><img src="https://img.shields.io/github/v/release/hcycyxx/dsh-think-overlay.svg?label=version&amp;color=B56C43" alt="最新版本" /></a>
+    <a href="https://github.com/hcycyxx/dsh-think-overlay/stargazers"><img src="https://img.shields.io/github/stars/hcycyxx/dsh-think-overlay.svg?label=stars&amp;color=3B77A1" alt="GitHub 星标数" /></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-478164.svg" alt="MIT 许可证" /></a>
+  </p>
+</div>
 
-把 DSH 页面里正在产生的**思考内容**，实时抽到一个置顶半透明悬浮窗里，盖在屏幕右下角。可以拖、可以缩、可以点击穿透，也能一键弹成独立小窗盖在别的程序上面。
+默认把正在产生的思考内容，一个字一个字地流进屏幕右下角的置顶半透明窗口；左上角绿灯的呼吸频率跟着吐字速度走，待机时缓慢明暗，思考越快闪得越急。英文思考自动翻成中文。窗口可拖动、缩放、点击穿透，也能一键弹成独立小窗，盖在别的程序上面。
 
-它是从更早那个「PowerShell + WPF + 读磁盘会话日志 + 依赖翻译插件」的悬浮窗重写来的，现在是**标准 DSH 客户端插件**：装好即启用，零外部依赖，Windows / macOS / Linux 都能用。
+这是社区界面插件，适用于 DSH Web 和使用同一界面的桌面版；TUI 不显示插件界面。它从更早那个「PowerShell + WPF + 读磁盘会话日志 + 依赖翻译插件」的悬浮窗重写而来，现在是标准 DSH 客户端插件：装好即启用，零外部依赖，无须重建前端产物。
 
-![窗口示意](https://raw.githubusercontent.com/hcycyxx/dsh-think-overlay/main/icon.svg)
+## 快速安装
 
----
-
-## 效果
-
-- **逐字流式**：思考内容一个字一个字往外吐，不整段闪跳。
-- **绿灯跟速**：左上角绿灯的闪烁频率跟着吐字速度变——待机时缓慢呼吸，思考越快闪得越快；用连续相位驱动，全程平滑不跳变。
-- **自动英译中**：英文思考自动翻成中文。优先走 DSH 自带翻译通道，失败降级到公共翻译端点，都失败就显示原文并定时自动重试。「译」按钮可随时开关。
-- **独立小窗**：点 `⧉` 弹出一个单独的窗口，能盖在别的程序上面；主窗与小窗逐字同步、绿灯同步。
-- **全套窗口操作**：拖标题移动、拖四边四角缩放、调透明度 / 字号、点击穿透、收起成小胶囊、清空、暂停跟随。
-- **自动记忆**：位置、大小、透明度、字号、穿透、翻译开关都记住，下次打开还在原处。
-
----
-
-## 怎么用 · 第一步：安装
-
-> 前提：你已经在用 DeepSeek Harness（DSH）桌面版。插件是标准 npm 包，不需要 Node 环境、不需要编译、不需要重建前端。
-
-### 方式 A：下载打包好的文件（最省事，推荐）
-
-1. 到本仓库的 **Releases** 页下载 `dsh-think-overlay-0.2.0.tgz`，存到一个记得住的位置，例如 `C:\Users\你\Downloads\dsh-think-overlay-0.2.0.tgz`。
-2. 在 DSH 里让助手执行这句话（把路径换成你的实际路径）：
-
-   ```
-   安装插件 file:C:/Users/你/Downloads/dsh-think-overlay-0.2.0.tgz
-   ```
-
-   或者在 DSH 的插件管理界面里选「从本地文件安装」，把上面那串 `file:` 路径填进去。
-3. 看到提示「已启用 / applied」即装好，**不需要重启 DSH**。
-
-### 方式 B：克隆本仓库，装目录（方便改代码 / 跟进更新）
-
-```
-git clone https://github.com/hcycyxx/dsh-think-overlay.git
+```sh
+dsh plugin --profile web add dsh-think-overlay@latest
 ```
 
-然后在 DSH 里执行（路径换成你 clone 到的实际目录）：
+安装后重启对应 DSH 实例；桌面版刷新网页即可。桌面版也可直接使用插件管理界面。
+
+> `@latest` 需本包发布到 npm 后使用（见[发布到 npm](#发布到-npm)）。**当前开箱即用**的方式是[插件市场](#通过插件市场推荐)或[离线安装](#命令行或离线安装)，不需要 npm 账号。其他安装方式见[安装](#安装)。
+
+## 效果预览
+
+![思考悬浮窗示意：右下角半透明窗口，标题栏 LIVE THINK 与绿灯，正文逐字流入，底部一行操作提示](docs/images/overview.svg)
+
+窗口固定在页面右下角，默认宽 428、高 380、透明度 0.9。思考内容按条分隔，每条带工具名与时间；位置、大小、透明度、字号、穿透、翻译开关都会记住，下次打开还在原处。点击 `⧉` 可弹出独立小窗，与主窗逐字同步、绿灯同步。
+
+> 示意图为静态绘制，用于说明布局，不是运行截图；窗口不读取截图中的任何数据。
+
+## 功能
+
+- **逐字流式**：思考内容一个字一个字往外吐，不整段闪跳。主窗是唯一的打字机，独立小窗直接显示已吐出的片段，两边一样顺滑。
+- **绿灯跟速**：左上角绿灯频率随吐字速度平滑变化（待机约 0.29 Hz 缓慢呼吸，活跃最高约 1.8 Hz）。用连续相位驱动，改速度不会让动画相位重启，肉眼不跳变。
+- **自动英译中**：英文思考自动翻成中文。优先走 DSH 自带翻译通道（本地 Node 侧），失败降级到公共翻译端点，仍失败则显示英文原文并每 6~18 秒自动重试最多 4 次。「译」按钮可随时开关，关掉后已翻好的退回原文。
+- **独立小窗**：`⧉` 弹出单独窗口，可置顶盖在别的程序上；主窗与小窗经消息通道同步，逐字结果与绿灯状态一致。
+- **全套窗口操作**：拖标题移动、拖四边四角缩放、两个滑杆调透明度与字号、点击穿透、收起成小胶囊、清空、暂停跟随。
+- **设置与记忆**：DSH 设置里出现「思考悬浮窗」一栏；全部偏好保存在当前界面的 `localStorage`（`dsh-think-overlay.cfg.v1`），卸载不会清除。
+
+取数只读 DSH 页面已渲染的思考行 `[data-variant="think"]` / `[data-chat-group-part="reasoning"]`，不读磁盘会话日志、不依赖「思考过程机器翻译」插件、不额外加载历史。折叠的思考行也能抓到摘要，展开后抓全文。DSH 若改动思考行结构，窗口不会报错，只是暂时没有新内容。
+
+> 英译中会把**英文思考文本**发到翻译服务：优先 DSH 自带通道，降级时才发往 Google / MyMemory 公共端点。介意的话关掉「译」即可，此时纯本地抓页面、不联网。除翻译外，插件不注册模型工具、不执行命令、不发送其他网络请求。
+
+## 安装
+
+### 通过插件市场（推荐）
+
+1. 打开 **插件 → 实验性插件**，启用 **自定义插件市场 / Custom plugin markets**（部分版本显示为 Custom plugin indexes）。
+2. 进入 **发现 / Discover → 添加索引源 / Add index source**。已有索引时，可在市场菜单选择 **管理索引源…**。
+3. 添加以下地址，选择 **hcycyxx 思考悬浮窗**，搜索 `dsh-think-overlay`，确认来源为 Git 仓库 `hcycyxx/dsh-think-overlay` 后安装。
+
+```text
+https://raw.githubusercontent.com/hcycyxx/dsh-think-overlay/main/market/index.json
+```
+
+按提示重启；桌面版刷新网页即可。索引源按 profile 保存，其他用户需要各自添加；排查方法见 [Discover 安装说明](docs/DISCOVER.md)。本索引使用 **Git 源**，无需 npm 账号即可安装。
+
+### 命令行或离线安装
+
+```sh
+# 安装最新版到 Web profile（发布到 npm 后可用）
+dsh plugin --profile web add dsh-think-overlay@latest
+
+# 或安装固定版本
+dsh plugin --profile web add dsh-think-overlay@0.2.0
+```
+
+离线安装可先从 [Releases](https://github.com/hcycyxx/dsh-think-overlay/releases) 下载 `dsh-think-overlay-0.2.0.tgz`，再使用实际文件名：
+
+```sh
+dsh plugin --profile web add ./dsh-think-overlay-0.2.0.tgz
+```
+
+桌面版可直接使用**插件管理界面**：填 `file:` 完整路径安装 tgz，或指向 clone 下来的仓库目录：
 
 ```
-安装插件 file:C:/路径/dsh-think-overlay
+file:C:/路径/dsh-think-overlay-0.2.0.tgz
+file:C:/路径/dsh-think-overlay
 ```
 
-> 仓库根目录就是插件包根目录（`package.json` 在最外层），直接填这个目录即可。
+安装后重启对应 DSH 实例。已验证的桌面版也可用其自带 CLI 管理 `desktop` profile；不要直接修改桌面应用安装目录。仓库根目录就是插件包根目录（`package.json` 在最外层），直接填目录即可。
 
-### 方式 C：自己打包
+### 发布到 npm
 
-在插件目录里跑 `npm pack`，会生成 `dsh-think-overlay-0.2.0.tgz`，再按方式 A 装这个 tgz。
+`@latest` 方式需要先发布到 npm。本仓库带一个 [发布工作流](.github/workflows/publish.yml)：在仓库 Settings 添加 `NPM_TOKEN` secret 后，在 Actions 里手动运行一次 **Publish to npm**（或推送 `v*` tag）即可发布当前版本；也可本地执行：
 
-### 装完之后
+```sh
+npm publish --access public
+```
 
-**刷新一下 DSH 网页**（`http://127.0.0.1:58703`，按 `F5`）。右下角出现「LIVE THINK」窗口就成功了。
+发布并确认 `https://registry.npmjs.org` 可查询后，`@latest` 命令即可用。
 
-> 更新代码后必须重新 `npm pack` + 重新安装，因为安装到 profile 里的是拷贝，不是链接。
+## 设置
 
----
-
-## 怎么用 · 第二步：窗口上的按钮
-
-窗口顶部一排按钮，从左到右：
+打开 **设置 → 插件 → 思考悬浮窗**，或直接操作窗口标题栏：
 
 | 按钮 | 作用 |
 | --- | --- |
-| `译` | 英译中开关。亮着=开，再点一下关；关掉后已翻好的会退回英文原文。 |
-| `⧉` | 弹出**独立小窗**（盖在别的程序上用这个）。 |
-| `◌` | 点击穿透：鼠标直接穿过去点后面的网页，窗口不再挡手。 |
-| `Ⅱ` | 暂停跟随：暂时不抓新的思考内容，再点继续。 |
-| `⌫` | 清空当前所有内容。 |
-| `—` | 收起窗口，变成右下角一个「💡 思考悬浮窗」小胶囊，点它展开。 |
+| `译` | 英译中开关，亮着为开 |
+| `⧉` | 弹出独立小窗 |
+| `◌` | 点击穿透，鼠标直接穿过去 |
+| `Ⅱ` | 暂停跟随，再点继续 |
+| `⌫` | 清空当前内容 |
+| `—` | 收起成「💡 思考悬浮窗」小胶囊 |
 
-其他操作：
-
-- **移动**：按住标题栏拖。
-- **缩放**：拖窗口的四条边或四个角。
+- **移动**：按住标题栏拖；**缩放**：拖四边四角。
 - **透明度 / 字号**：标题下方两个滑杆，实时生效。
-- **退出穿透**：开启穿透后，页面右下会出现「🔒 退出穿透」按钮；在独立小窗里按 `Esc` 也能退出。
-- **设置页**：DSH 设置里会出现「思考悬浮窗」一栏，可以开关、清空、重置位置。
+- **退出穿透**：开启穿透后页面右下出现「🔒 退出穿透」；独立小窗里按 `Esc` 也可退出。
+- **盖住别的程序**：`⧉` 弹出小窗后点「置顶」。宿主未开放置顶接口时按钮显示「置顶*」，用系统窗口菜单或 PowerToys「总在最前」手动置顶即可，数据仍实时同步。
 
-### 想让它盖住别的程序
+首次安装和恢复默认时使用以下组合：
 
-点 `⧉` 弹出独立小窗 → 点小窗里的「置顶」。如果 DSH 没开放窗口置顶接口，按钮会显示「置顶*」，这时用系统窗口菜单（Windows 上右键任务栏窗口 → 或借助 PowerToys「总在最前」）手动置顶即可；数据依然实时同步。
+| 项目 | 默认值 |
+| --- | --- |
+| 宽 × 高 | 428 × 380 |
+| 位置 | 右下角（距边 28 px） |
+| 透明度 | 0.9 |
+| 字号 | 15 px |
+| 点击穿透 | 关 |
+| 英译中 | 开 |
 
-### 让它开始显示内容
+## 兼容性与数据
 
-随便让模型回答一次问题、产生一段思考即可。内容会自动一条条流进来。默认折叠的思考行也能抓到摘要，展开思考行后抓全文。
+0.2.0 不按 DSH 版本号阻止安装或加载；这不等于未来版本都已测试。已在 Windows 桌面版（Electron，DSH 0.2.2-rc.1）实测安装与加载；Web profile、macOS 与 Linux 桌面版的持续运行仍属未验证范围。
 
----
+插件读取已显示的聊天结构、元素尺寸与当前会话已加载的思考行，不额外加载历史；不注册模型工具、不执行命令。英译中降级时会向公共翻译端点发送英文思考文本，其余不发送网络请求。设置保存在当前界面的 `localStorage`（`dsh-think-overlay.cfg.v1`）；卸载不会清除偏好。若存储不可用，插件按默认值运行，恢复后再次调整即可。
 
-## 常见问题
+想让内容开始流入，随便让模型回答一次问题、产生一段思考即可。
 
-**刷新了但没内容？**
-让模型产生一次新的思考；或把页面里的思考行展开一下。DSH 若改了思考行的结构，窗口不会报错，只是暂时没有新内容，刷新 / 清缓存即可恢复。
+## 文档
 
-**英文没翻成中文？**
-先看标题栏「译」是否亮着；翻译走网络，临时不通时会显示英文原文并每 6~18 秒自动重试，最多 4 次，通了会自动补翻。
+| 文档 | 内容 |
+| --- | --- |
+| [Discover 安装](docs/DISCOVER.md) | 添加索引源、安装与排查 |
+| [English README](README.en.md) | 英文介绍 |
+| [更新日志](CHANGELOG.md) | 版本变更 |
+| [市场索引](market/index.json) | 自托管的 Discover 索引 |
 
-**改了代码 / 换了版本，刷新没变化？**
-重新 `npm pack` 生成新 tgz，再走一次方式 A 安装；profile 里是拷贝，不重装看到的还是旧版。
+## 卸载
 
-**翻译会不会把内容发出去？**
-会。英译中优先用 DSH 自带通道（本地 Node 侧），降级时才把**英文思考文本**发到 Google / MyMemory 公共翻译端点。介意的话把「译」关掉即可，纯本地抓页面、不联网。
+```sh
+dsh plugin --profile web remove dsh-think-overlay
+```
 
----
+重启对应实例；桌面版可使用插件管理界面。无须删除整个 DSH profile。
 
-## 技术说明
+## 开发与验证
 
-- 数据来源：直接读 DSH 页面里的思考行 `[data-variant="think"]` / `[data-chat-group-part="reasoning"]`，不读磁盘会话日志、不依赖「思考过程机器翻译」插件。
-- 标准 DSH 插件：`dsh.bundle.patch` 注册宿主条目，`dsh.client` 注入网页前端；宿主每次返回 HTML 时动态注入，**不需要重建前端产物**。
-- 纯网页 DOM + 原生 JS，无框架、无运行时依赖、无硬编码路径。
+需要 Node.js 22 或更新版本。运行文件已入库，无须构建；无框架、无运行时依赖、无硬编码路径。
+
+```sh
+node --check client.js
+node --check index.js
+npm pack                       # 生成可分发的 tgz
+```
+
+改了工作区源码后必须重新 `npm pack` + 重新安装，因为安装到 profile 里的是拷贝，不是链接。提交问题时请提供 DSH 版本与系统，避免附带私人聊天内容。
 
 | 文件 | 作用 |
 | --- | --- |
@@ -124,4 +173,4 @@ git clone https://github.com/hcycyxx/dsh-think-overlay.git
 
 ## 许可
 
-MIT
+MIT，见 [LICENSE](LICENSE)。
