@@ -17,6 +17,8 @@
 
 这是社区界面插件，适用于 DSH Web 和使用同一界面的桌面版；TUI 不显示插件界面。它从更早那个「PowerShell + WPF + 读磁盘会话日志 + 依赖翻译插件」的悬浮窗重写而来，现在是标准 DSH 客户端插件：装好即启用，零外部依赖，无须重建前端产物。
 
+**[下载 0.2.0 源码与中文文档](https://github.com/hcycyxx/dsh-think-overlay/releases/download/v0.2.0/dsh-think-overlay-v0.2.0-source-docs-20261109_v2.zip)** · [版本下载页](https://github.com/hcycyxx/dsh-think-overlay/releases/tag/v0.2.0)
+
 ## 快速安装
 
 当前版本为 **0.2.0**，优先使用 [插件市场](#通过插件市场推荐) 或 [Release 离线安装包](https://github.com/hcycyxx/dsh-think-overlay/releases/download/v0.2.0/dsh-think-overlay-0.2.0.tgz)。
