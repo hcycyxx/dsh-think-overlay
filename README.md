@@ -19,13 +19,15 @@
 
 ## 快速安装
 
+当前版本为 **0.2.0**，优先使用 [插件市场](#通过插件市场推荐) 或 [Release 离线安装包](https://github.com/hcycyxx/dsh-think-overlay/releases/download/v0.2.0/dsh-think-overlay-0.2.0.tgz)。
+
+下载 tgz 后，用实际文件路径安装并重启对应实例：
+
 ```sh
-dsh plugin --profile web add dsh-think-overlay@latest
+dsh plugin --profile web add ./dsh-think-overlay-0.2.0.tgz
 ```
 
-安装后重启对应 DSH 实例；桌面版刷新网页即可。桌面版也可直接使用插件管理界面。
-
-> `@latest` 需本包发布到 npm 后使用（见[发布到 npm](#发布到-npm)）。**当前开箱即用**的方式是[插件市场](#通过插件市场推荐)或[离线安装](#命令行或离线安装)，不需要 npm 账号。其他安装方式见[安装](#安装)。
+桌面版也可通过插件管理界面安装。`@latest` 只有在 npm 已发布并可查询到包后才适用，不能把它作为当前已验证的安装入口。
 
 ## 效果预览
 

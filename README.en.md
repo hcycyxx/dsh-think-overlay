@@ -1,3 +1,5 @@
+> Current installation: use the plugin market or the [v0.2.0 offline package](https://github.com/hcycyxx/dsh-think-overlay/releases/download/v0.2.0/dsh-think-overlay-0.2.0.tgz). The `@latest` command requires a separately verified npm publication.
+
 <div align="center">
   <h1>DSH Think Overlay</h1>
   <p><strong>Pull DeepSeek Harness's live thinking into an overlay you can actually see and move.</strong></p>
