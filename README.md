@@ -175,6 +175,17 @@ npm pack                       # 生成可分发的 tgz
 | `client.js` | 全部实现：抓思考行、逐字流式、绿灯跟速、英译中、拖拽缩放、配置持久化、独立小窗、设置页 |
 | `icon.svg` | 插件图标 |
 
+<!-- jack-white-rice-support:start -->
+## 请大肥鱼吃大白饭 🍚
+
+如果这个项目帮到了你，欢迎请大肥鱼吃一碗大白饭。自愿投喂，量力而行，感谢支持！
+
+<p>
+  <a href="assets/support/alipay-jack-v1.jpg"><img src="assets/support/alipay-jack-v1.jpg" alt="Jack 的支付宝收款码：请大肥鱼吃大白饭" height="320"></a>
+  <a href="assets/support/rice-meme-v1.png"><img src="assets/support/rice-meme-v1.png" alt="大肥鱼端碗表情包：饭呢？" height="320"></a>
+</p>
+<!-- jack-white-rice-support:end -->
+
 ## 许可
 
 MIT，见 [LICENSE](LICENSE)。
